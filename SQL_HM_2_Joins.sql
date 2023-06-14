@@ -39,9 +39,9 @@ select employee_name, monthly_salary from employees
  3. Вывести все зарплатные позиции, но работник по ним не назначен. (ЗП есть, но не понятно кто её получает.) +
    
 select monthly_salary, employee_name from employee_salary es 
-        left join employees e on es.employee_id = e.id 
+    left join employees e on es.employee_id = e.id 
 	left join salary s on es.salary_id = s.id
-   where employee_name is null;
+	where employee_name is null;
 
  
  4. Вывести все зарплатные позиции  меньше 2000 но работник по ним не назначен. (ЗП есть, но не понятно кто её получает.) +
@@ -49,54 +49,54 @@ select monthly_salary, employee_name from employee_salary es
  select monthly_salary, employee_name from employee_salary es  
 	left join employees e on es.employee_id = e.id
 	left join salary s on es.salary_id = s.id
-   where employee_name is null and monthly_salary < 2000;
+	where employee_name is null and monthly_salary < 2000;
  
  
  5. Найти всех работников кому не начислена ЗП. +
 
 select e.employee_name, s.monthly_salary from employees e 
-      left join employee_salary es  on  e.id  = es.employee_id 
-      left join salary s on s.id = es.salary_id 
+left join employee_salary es  on  e.id  = es.employee_id 
+left join salary s on s.id = es.salary_id 
 where s.monthly_salary is null;
 
 
  6. Вывести всех работников с названиями их должности. +
 
  select employee_name, role_name from employees e
-       join roles_employee re on e.id = re.employee_id 
-       join roles r on re.role_id  = r.id;
+ join roles_employee re on e.id = re.employee_id 
+ join roles r on re.role_id  = r.id;
 	
 
  7. Вывести имена и должность только Java разработчиков. +
 	
 select  employee_name , role_name from employees e
-      join roles_employee re on e.id = re.employee_id
-      join roles r on re.role_id  = r.id
+join roles_employee re on e.id = re.employee_id
+join roles r on re.role_id  = r.id
 where role_name like '%Java developer%';
 
 
  8. Вывести имена и должность только Python разработчиков. +
  
  select employee_name , role_name from employees e
-       join roles_employee re on e.id = re.employee_id
-       join roles r on re.role_id  = r.id
- where role_name like '%Python developer%';
+join roles_employee re on e.id = re.employee_id
+join roles r on re.role_id  = r.id
+where role_name like '%Python developer%';
  
 
  9. Вывести имена и должность всех QA инженеров.           +
 
  select employee_name , role_name from employees e    
-       join roles_employee re on e.id = re.employee_id
-       join roles r on re.role_id  = r.id
- where role_name like '%QA enginee%';
+join roles_employee re on e.id = re.employee_id
+join roles r on re.role_id  = r.id
+where role_name like '%QA enginee%';
  
 
  10. Вывести имена и должность ручных QA инженеров.     +
  
  select employee_name , role_name from employees e
-       join roles_employee re on re.employee_id = e.id 
-       join roles r on r.id = re.role_id 
- where role_name like '%Manual QA engineer%';
+join roles_employee re on re.employee_id = e.id 
+join roles r on r.id = re.role_id 
+where role_name like '%Manual QA engineer%';
  
 
  11. Вывести имена и должность автоматизаторов QA   +
@@ -157,8 +157,8 @@ where r.role_name like '%Senior%';
  
  17. Вывести имена и зарплаты Junior Python разработчиков  +
  
- select e.employee_name, salary.monthly_salary, r.role_name, e.id  from employee_salary es ------ имена и зарплаты(убрать роль и ID) я
-join salary on es.salary_id = salary.id
+ select e.employee_name, s.monthly_salary, r.role_name, e.id  from employee_salary es ------ имена и зарплаты(убрать роль и ID) я
+join salary s on es.salary_id = s.id
 join employees e on es.employee_id = e.id 
 join roles_employee re on re.employee_id  = es.employee_id 
 join roles r on re.role_id  = r.id
@@ -167,8 +167,8 @@ join roles r on re.role_id  = r.id
 
  18. Вывести имена и зарплаты Middle JS разработчиков +
  
- select e.employee_name, salary.monthly_salary, r.role_name, e.id  from employee_salary es ------ имена и зарплаты(убрать роль и ID) я
-join salary on es.salary_id = salary.id
+ select e.employee_name, s.monthly_salary, r.role_name, e.id  from employee_salary es ------ имена и зарплаты(убрать роль и ID) я
+join salary s on es.salary_id = s.id
 join employees e on es.employee_id = e.id 
 join roles_employee re on re.employee_id  = es.employee_id 
 join roles r on re.role_id  = r.id
@@ -177,8 +177,8 @@ join roles r on re.role_id  = r.id
  
  19. Вывести имена и зарплаты Senior Java разработчиков  +
  
- select e.employee_name, salary.monthly_salary, r.role_name, e.id  from employee_salary es  
- join salary on es.salary_id = salary.id
+ select e.employee_name, s.monthly_salary, r.role_name, e.id  from employee_salary es  
+ join salary s on es.salary_id = s.id
 join employees e on es.employee_id = e.id 
 join roles_employee re on re.employee_id  = es.employee_id 
 join roles r on re.role_id  = r.id
