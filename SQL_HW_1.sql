@@ -21,7 +21,7 @@ SQL_HW_1
  
  2. Вывести всех студентов в таблице
  
- select name from students s 
+ select * from students s 
  
  3. Вывести только Id пользователей
  
